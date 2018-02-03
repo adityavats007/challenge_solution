@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	 <link rel="stylesheet" type="text/css" media="all" href="style.css">
+  <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="jquery.autocomplete.min.js"></script>
+  <script type="text/javascript" src="currency-autocomplete.js"></script>
+  <script type="text/javascript" src="bootstrap.min.js"></script>
+	
+	
+</head>
+
+<body>
+ <div id="w">
+    <div id="content">
+      <h1>Projects</h1>
+      <p>Just start typing and results will be supplied from the JavaScript. Check out <a href="https://github.com/devbridge/jQuery-Autocomplete">jQuery Autocomplete</a> on Github.</a></p>
+      
+      <div id="searchfield">
+        <form><input type="text" name="currency" class="biginput" id="autocomplete"></form>
+      </div><!-- @end #searchfield -->
+      
+      <div id="outputbox">
+        <p id="outputcontent">Choose a project and the results will display here.</p>
+      </div>
+    </div><!-- @end #content -->
+  </div><!-- @end #w -->
+   <h2 style="color:blue;font-family:verdana;font-size:260%;margin-left:20px;margin-bottom:20px"> DATAS</h2>
+   <div>
+   <table id="orders" style="color:blue;font-family:verdana;font-size:160%;margin-left:20px;">
+   <tr >
+   <td id="orders1" style="color:blue;font-family:verdana;font-size:100%;margin-bottom:20px;">project name</td>
+ <td></td>
+   <td id="orders2" style="color:blue;font-family:verdana;font-size:100%;margin-top:20px;">country</td>
+   </tr>
+   </table>
+   
+   </div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   
+ 
+  <div></div>
+   <div></div>
+    <script>
+$( function(){
+var $orders=$('#orders');
+var $orders1=$('#orders1');
+var $orders2=$('#orders2');
+$.ajax({
+type: 'GET',
+url: 'http://starlord.hackerearth.com/kickstarter',
+success:function(orders){
+$.each(orders ,function(i,order){
+//$orders.append('<ul>'+order.country+'</ul>');
+$orders.append('Project'+i+'<br>'+'     '+'<ul>'+order.country+'</ul>'+'<ul>'+order.currency+'</ul>'+'<ul>'+order.location+'</ul>'+'<ul>'+order.state+'</ul>'+'<br>');
+$orders2.append('<ul>'+order.country+'</ul>'+'<br>');
+$orders1.append('<ul>'+order.title+'</ul>'+'<br>');
+});
+
+}
+});
+
+});
+    </script>
+    
+</body>
+</html>
